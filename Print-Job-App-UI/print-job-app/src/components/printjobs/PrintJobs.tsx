@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IPrintJob } from '../../models/IPrintJob';
 import { PrintJobApi } from '../../services/PrintJobApi';
 import PrintJobTableView from './PrintJobTableView';
@@ -26,6 +27,7 @@ const PrintJobs = () => {
                         <div className="col-lg-8 col-lg-offset-2">
                             <h4>WE WORK HARD TO ACHIEVE EXCELLENCE</h4>
                             <p>AND WE ARE HAPPY TO DO IT</p>
+                            <ul><li className="active"><NavLink to={"/CreatePrintJob"} className="btn">Add New Print Job</NavLink></li></ul>
                         </div>
                     </div>
                 </div>
