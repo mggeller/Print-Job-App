@@ -1,6 +1,11 @@
 const express = require("express");
 let app = express();
 let db = require("./database.js");
+let md5 = require("md5");
+let bodyParser = require("body-parser");
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 let HTTP_PORT = 8000;
 app.listen(HTTP_PORT, () => {
@@ -24,6 +29,31 @@ app.get("/api/printjobs", (req, res, next) => {
             "data": rows
         });
     });
+});
+
+app.post("/api/printjobs", (req, res, next) => {
+    let errors = [];
+    let data = {personName: req.body.person_name, 
+                createdAt: req.body.created_at, 
+                duration: req.body.duration,
+                fileName: req.body.file_name,
+                description: req.body.description,
+                printerModel: req.body.printer_model,
+                printerType: req.body.printer_type}
+    let sql = 'INSERT INTO printjobs (person_name, created_at, duration, file_name, description, printer_model, printer_type) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let params = [data.personName, data.createdAt, data.duration, data.fileName, data.description, data.printerModel, data.printerType];
+    db.run(sql, params, function(err, result) {
+        if (err) {
+            res.status(400).json({"error": err.message});
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": data,
+            "id": this.lastID
+        });
+    });
+
 });
 
 app.use((req, res) => {
