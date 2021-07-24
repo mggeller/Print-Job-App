@@ -1,10 +1,10 @@
 export interface IPrintJob {
     id: number;
-    name: string;
-    startDateTime: string;
+    person_name: string;
+    created_at: string;
     duration: number;
-    nameOfPrintedFile: string;
+    file_name: string;
     description: string;
-    printerModel: string;
-    printerType: string;
+    printer_model: string;
+    printer_type: string;
 }

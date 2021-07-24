@@ -3,9 +3,11 @@ let app = express();
 let db = require("./database.js");
 let md5 = require("md5");
 let bodyParser = require("body-parser");
+let cors = require("cors");
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors());
 
 let HTTP_PORT = 8000;
 app.listen(HTTP_PORT, () => {
@@ -24,10 +26,7 @@ app.get("/api/printjobs", (req, res, next) => {
             res.status(400).json({"error": err.message});
             return;
         }
-        res.json({
-            "message": "success",
-            "data": rows
-        });
+        res.json(rows);
     });
 });
 
@@ -40,6 +39,7 @@ app.post("/api/printjobs", (req, res, next) => {
                 description: req.body.description,
                 printerModel: req.body.printer_model,
                 printerType: req.body.printer_type}
+
     let sql = 'INSERT INTO printjobs (person_name, created_at, duration, file_name, description, printer_model, printer_type) VALUES (?, ?, ?, ?, ?, ?, ?)';
     let params = [data.personName, data.createdAt, data.duration, data.fileName, data.description, data.printerModel, data.printerType];
     db.run(sql, params, function(err, result) {

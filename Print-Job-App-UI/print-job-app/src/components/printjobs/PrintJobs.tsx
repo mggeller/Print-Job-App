@@ -9,8 +9,8 @@ const PrintJobs = () => {
     const [printJobs, setPrintJobs] = useState([] as IPrintJob[]);
 
     useEffect(() => {
-        const callApi = () => {
-            const data = PrintJobApi.getAll();
+        const callApi = async () => {
+            const data = await PrintJobApi.getAll();
             console.log('data', data);
             setPrintJobs(data);
         }
