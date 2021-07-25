@@ -7,13 +7,13 @@ const PrintJobTableView = (props: { printJob: IPrintJob }) => {
             <div className="row">
                 <br />
                 <div className="col-lg-6 centered">
-                    <img src="img/p03.png" alt="" />
+                    <img src="img/PrintJobPic.jpg" alt="" />
                 </div>
                 <div className="col-lg-6">
                     <h4>{props.printJob.person_name}</h4>
                     <p>{props.printJob.description}</p>
                     <p>
-                        <i className="fa fa-circle-o"></i>Date and time of the Print Job start - {props.printJob.created_at}<br />
+                        <i className="fa fa-circle-o"></i>Date and time of the Print Job start - {props.printJob.start_at}<br />
                         <i className="fa fa-circle-o"></i> Duration - {props.printJob.duration}<br />
                         <i className="fa fa-circle-o"></i> Name of the file Being printed - {props.printJob.file_name}<br />
                         <i className="fa fa-circle-o"></i> Printer Model - {props.printJob.printer_model}<br />

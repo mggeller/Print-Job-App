@@ -33,14 +33,14 @@ app.get("/api/printjobs", (req, res, next) => {
 app.post("/api/printjobs", (req, res, next) => {
     let errors = [];
     let data = {personName: req.body.person_name, 
-                createdAt: req.body.created_at, 
+                createdAt: req.body.start_at, 
                 duration: req.body.duration,
                 fileName: req.body.file_name,
                 description: req.body.description,
                 printerModel: req.body.printer_model,
                 printerType: req.body.printer_type}
 
-    let sql = 'INSERT INTO printjobs (person_name, created_at, duration, file_name, description, printer_model, printer_type) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let sql = 'INSERT INTO printjobs (person_name, start_at, duration, file_name, description, printer_model, printer_type) VALUES (?, ?, ?, ?, ?, ?, ?)';
     let params = [data.personName, data.createdAt, data.duration, data.fileName, data.description, data.printerModel, data.printerType];
     db.run(sql, params, function(err, result) {
         if (err) {

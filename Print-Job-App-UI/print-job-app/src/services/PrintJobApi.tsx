@@ -38,4 +38,19 @@ export abstract class PrintJobApi {
             return [];
         }
     }
+
+    static async create(printJob: IPrintJob): Promise<string> {
+        const url = "";
+        try {
+            const response = await this.axios.post(url, printJob);
+            console.log('create response', response);
+            if (response.status === 200) {
+                return "";
+            }
+            return "";
+        } catch(error) {
+            console.log('error ', (error as Error).message);
+            return "";
+        }
+    }
 }

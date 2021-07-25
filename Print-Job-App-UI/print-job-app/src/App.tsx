@@ -1,6 +1,4 @@
 import React from 'react';
-import HeadLinks from './components/shared/HeadLinks';
-import FooterScriptLinks from './components/shared/FooterScriptLinks';
 import PrintJobs from './components/printjobs/PrintJobs';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreatePrintJob from './components/printjobs/CreatePrintJob';
