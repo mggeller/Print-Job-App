@@ -44,7 +44,6 @@ const CreatePrintJob = () => {
       await PrintJobApi.create(printJob);
     }
     callApi();
-    console.log(event.target);
     history.push('/');
   }
 

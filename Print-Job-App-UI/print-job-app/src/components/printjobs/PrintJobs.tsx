@@ -11,7 +11,6 @@ const PrintJobs = () => {
     useEffect(() => {
         const callApi = async () => {
             const data = await PrintJobApi.getAll();
-            console.log('data', data);
             setPrintJobs(data);
         }
 
